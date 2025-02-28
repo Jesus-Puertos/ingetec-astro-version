@@ -1,0 +1,213 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import EventTable from "@/components/EventTable.astro";
+
+const events = [
+  {
+    src: "./img/integrantes/integrante-1.png",
+    name: "Ricardo García Castro",
+    alias: "@Martin",
+    type: "Presentación libro impreso de 'Conceptos Computacionales Nahualt – Español'.",
+    email: "example@zongolica.tecnm.mx",
+    status: "Proximamente",
+    date: "2023-10-22T13:12:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-2.png",
+    name: "Martin Contreras de la Cruz",
+    alias: "@Martin",
+    type: "Entrega de premios a evento Laguna Hack 2022 y Conferencia de Ciberseguridad.",
+    email: "example@zongolica.tecnm.mx",
+    status: "Terminado",
+    date: "2023-10-22T13:12:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-3.png",
+    name: "Ana González",
+    alias: "@Ana",
+    type: "Charla sobre Innovación Tecnológica en el ITSZ.",
+    email: "ana@example.com",
+    status: "Pendiente",
+    date: "2023-11-10T14:30:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-4.png",
+    name: "José Pérez",
+    alias: "@JoseP",
+    type: "Hackathon 2023: Desarrollo de Apps con IA.",
+    email: "jose@example.com",
+    status: "En Proceso",
+    date: "2023-09-15T09:00:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-5.png",
+    name: "María López",
+    alias: "@Maria",
+    type: "Seminario de Ciberseguridad para Empresas.",
+    email: "maria@example.com",
+    status: "Proximamente",
+    date: "2023-12-05T16:45:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-6.png",
+    name: "Carlos Ramírez",
+    alias: "@CarlosR",
+    type: "Curso de Desarrollo Web con Astro.js.",
+    email: "carlos@example.com",
+    status: "Terminado",
+    date: "2023-08-22T11:00:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-7.png",
+    name: "Luis Martínez",
+    alias: "@LuisM",
+    type: "Lanzamiento de la App de Turismo Digital.",
+    email: "luis@example.com",
+    status: "Pendiente",
+    date: "2023-10-30T13:15:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-8.png",
+    name: "Andrea Gutiérrez",
+    alias: "@AndreaG",
+    type: "Exposición de Proyectos de Innovación 2023.",
+    email: "andrea@example.com",
+    status: "Proximamente",
+    date: "2023-11-25T17:30:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-9.png",
+    name: "Fernando Díaz",
+    alias: "@FerD",
+    type: "Conferencia: El futuro de la Programación.",
+    email: "fernando@example.com",
+    status: "Terminado",
+    date: "2023-07-18T08:00:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-10.png",
+    name: "Patricia Hernández",
+    alias: "@PatyH",
+    type: "Taller de Machine Learning para Principiantes.",
+    email: "patricia@example.com",
+    status: "Pendiente",
+    date: "2023-12-15T10:00:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-11.png",
+    name: "Roberto Chávez",
+    alias: "@RobertoC",
+    type: "Hackathon ITSZ: Creación de Startups Tecnológicas.",
+    email: "roberto@example.com",
+    status: "Proximamente",
+    date: "2023-11-05T09:30:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-12.png",
+    name: "Daniela Torres",
+    alias: "@DaniT",
+    type: "Mesa Redonda sobre Ética en la IA.",
+    email: "daniela@example.com",
+    status: "Terminado",
+    date: "2023-06-22T12:00:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-13.png",
+    name: "Jorge Salazar",
+    alias: "@JorgeS",
+    type: "Presentación de Videojuegos Desarrollados por Estudiantes.",
+    email: "jorge@example.com",
+    status: "Pendiente",
+    date: "2023-10-12T15:45:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-14.png",
+    name: "Gabriela Medina",
+    alias: "@GabyM",
+    type: "Curso Intensivo de UX/UI para Startups.",
+    email: "gabriela@example.com",
+    status: "En Proceso",
+    date: "2023-09-29T14:00:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-15.png",
+    name: "Hugo Vázquez",
+    alias: "@HugoV",
+    type: "Taller de Desarrollo de APIs con Node.js.",
+    email: "hugo@example.com",
+    status: "Proximamente",
+    date: "2023-11-18T09:00:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-16.png",
+    name: "Beatriz Castro",
+    alias: "@BeaC",
+    type: "Panel de Expertos en Big Data y Analytics.",
+    email: "beatriz@example.com",
+    status: "Terminado",
+    date: "2023-07-25T11:30:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-17.png",
+    name: "Ricardo Mendoza",
+    alias: "@RicardoM",
+    type: "Exposición de Inteligencia Artificial en Educación.",
+    email: "ricardo@example.com",
+    status: "Pendiente",
+    date: "2023-12-01T16:00:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-18.png",
+    name: "Fátima Ríos",
+    alias: "@FatimaR",
+    type: "Simposio Internacional de Innovación Tecnológica.",
+    email: "fatima@example.com",
+    status: "En Proceso",
+    date: "2023-09-08T13:45:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-19.png",
+    name: "Diego Suárez",
+    alias: "@DiegoS",
+    type: "Charla sobre Blockchain y Criptomonedas.",
+    email: "diego@example.com",
+    status: "Proximamente",
+    date: "2023-11-20T10:30:00Z",
+  },
+  {
+    src: "./img/integrantes/integrante-20.png",
+    name: "Claudia Navarro",
+    alias: "@ClaudiaN",
+    type: "Taller de Robótica para Principiantes.",
+    email: "claudia@example.com",
+    status: "Terminado",
+    date: "2023-08-10T14:15:00Z",
+  },
+];
+
+const itemsOnPage = 5;
+const currentPage = Number(new URL(Astro.url).searchParams.get("page") || 1);
+const totalPages = Math.ceil(events.length / itemsOnPage);
+
+const paginatedEvents = events.slice(
+  (currentPage - 1) * itemsOnPage,
+  currentPage * itemsOnPage
+);
+---
+
+<Layout title="Agenda del IngeTec">
+  <!-- Home -->
+  <section class="about-home">
+    <h2>Agenda <span class="title-blue">INGE</span>TEC</h2>
+  </section>
+
+  <!-- Tabla -->
+
+  <section class="container">
+    <EventTable
+      events={paginatedEvents}
+      currentPage={currentPage}
+      totalPages={totalPages}
+    />
+  </section>
+</Layout>

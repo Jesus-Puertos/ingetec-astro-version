@@ -1,0 +1,77 @@
+---
+const profiles = [
+  {
+    name: "Dr. Roberto Ruiz",
+    img: "/img/integrantes/integrante-1.png",
+    description: "Ingeniero en sistemas y experto en Java",
+    links: [
+      { icon: "fab fa-facebook-f", url: "https://www.facebook.com/" },
+      { icon: "fab fa-github", url: "" },
+      { icon: "fab fa-linkedin-in", url: "" },
+    ],
+  },
+  {
+    name: "Dr. Arturo Rayon",
+    img: "/img/integrantes/integrante-2.png",
+    description: "Ingeniero en sistemas y experto en Java",
+    links: [
+      { icon: "fab fa-facebook-f", url: "https://www.facebook.com/" },
+      { icon: "fab fa-github", url: "" },
+      { icon: "fab fa-linkedin-in", url: "" },
+    ],
+  },
+  {
+    name: "Ing. Ricardo García Castro",
+    img: "/img/integrantes/integrante-3.png",
+    description: "Ingeniero en sistemas y experto en Java",
+    links: [
+      { icon: "fab fa-facebook-f", url: "https://www.facebook.com/" },
+      { icon: "fab fa-github", url: "" },
+      { icon: "fab fa-linkedin-in", url: "" },
+    ],
+  },
+  {
+    name: "Dr. Martín Contreras de la Cruz",
+    img: "/img/integrantes/integrante-4.png",
+    description: "Ingeniero en sistemas y experto en Java",
+    links: [
+      { icon: "fab fa-facebook-f", url: "https://www.facebook.com/" },
+      { icon: "fab fa-github", url: "" },
+      { icon: "fab fa-linkedin-in", url: "" },
+    ],
+  },
+  {
+    name: "Ing. Raygoza",
+    img: "/img/integrantes/integrante-5.png",
+    description: "Ingeniero en sistemas y experto en Java",
+    links: [
+      { icon: "fab fa-facebook-f", url: "https://www.facebook.com/" },
+      { icon: "fab fa-github", url: "" },
+      { icon: "fab fa-linkedin-in", url: "" },
+    ],
+  },
+];
+---
+
+{
+  profiles.map((profile) => (
+    <div class="profile hidden">
+      <img src={profile.img} alt={profile.name} />
+      <h6>{profile.name}</h6>
+      <p>{profile.description}</p>
+      <div class="pro-links">
+        {profile.links.map((link) => (
+          <i class={link.icon} />
+        ))}
+      </div>
+    </div>
+  ))
+}
+
+<style>
+  img {
+    mask-image: linear-gradient(yellow 90%, transparent);
+    width: 100%;
+    object-fit: cover;
+  }
+</style>

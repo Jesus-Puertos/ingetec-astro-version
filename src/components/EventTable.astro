@@ -1,0 +1,85 @@
+---
+interface TeamMember {
+  src: string;
+  name: string;
+  email: string;
+  type: string;
+  status: string;
+  date: string;
+}
+
+const { events, currentPage, totalPages } = Astro.props as {
+  events: TeamMember[];
+  currentPage: number;
+  totalPages: number;
+};
+---
+
+<div class="table-widget">
+  <table>
+    <caption>
+      Calendario
+      <span class="table-row-count">({events.length})</span>
+    </caption>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Evento</th>
+        <th>Estado</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody id="table-rows">
+      {
+        events.map((teamMember) => (
+          <tr>
+            <td class="team-member-profile">
+              <img src={teamMember.src} alt={teamMember.name} />
+              <span class="profile-info">
+                <span class="profile-info__name">{teamMember.name}</span>
+                <span class="profile-info__alias">{teamMember.email}</span>
+              </span>
+            </td>
+            <td>{teamMember.type}</td>
+            <td>
+              <span class={`status status--${teamMember.status}`}>
+                {teamMember.status}
+              </span>
+            </td>
+            <td>
+              {new Date(teamMember.date).toLocaleDateString("es-mx", {
+                weekday: "short",
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+              })}
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4">
+          <ul class="pagination">
+            {
+              Array.from({ length: totalPages }, (_, i) => (
+                <li>
+                  <a
+                    href={`?page=${i + 1}`}
+                    class={i + 1 === currentPage ? "active1" : ""}
+                    title={`page ${i + 1}`}
+                  >
+                    {i + 1}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

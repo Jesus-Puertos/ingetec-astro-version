@@ -1,0 +1,29 @@
+---
+const { event } = Astro.props;
+---
+
+<div class="event-card">
+  <div class="event-header">
+    <img src={event.src} alt={event.name} class="event-avatar" />
+    <div class="event-info">
+      <strong>{event.name}</strong>
+      <span>{event.email}</span>
+    </div>
+  </div>
+  <p>{event.type}</p>
+  <span class={`status ${event.status.toLowerCase()}`}>
+    {event.status}
+  </span>
+  <time>
+    {
+      new Date(event.date).toLocaleDateString("es-MX", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+      })
+    }
+  </time>
+</div>

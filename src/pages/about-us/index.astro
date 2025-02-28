@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import About from "@/sections/about-us/About.astro";
+import MisionAndVision from "@/sections/about-us/MisionAndVision.astro";
+import Adwards from "@/sections/about-us/Adwards.astro";
+import HeroForPage from "@/components/HeroForPage.astro";
+---
+
+<Layout title="About Us">
+  <HeroForPage title="Sobre El Cuerpo Académico" highlight="INGE" />
+
+  <!-- Sobre nosotros -->
+  <About />
+
+  <!-- Mision y vision -->
+  <MisionAndVision />
+
+  <!-- premios -->
+  <Adwards />
+</Layout>

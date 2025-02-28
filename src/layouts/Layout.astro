@@ -1,22 +1,155 @@
+---
+import Footer from "@/components/Footer.astro";
+import Header from "../components/Header.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <!--
+       fAVICON
+       -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/img/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/img/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/img/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/img/favicon_io/site.webmanifest" />
+
+    <!--
+       FontAwesome
+       -->
+    <script
+      src="https://kit.fontawesome.com/a041d4383c.js"
+      crossorigin="anonymous"></script>
+
+    <!-- iCONS
+     -->
+    <!-- Icons-->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- 
+    Google Font 
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 
+        preload styles
+     -->
+    <link rel="preload" href="/css/global.css" as="style" />
+    <link rel="stylesheet" href="/css/global.css" />
+
+    <!-- 
+      jquery
+     -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>
+
+<script is:inline>
+  /**
+   * PRELOAD
+   *
+   * loading will be end after document is loaded
+   */
+
+  const preloader = document.querySelector("[data-preaload]");
+
+  window.addEventListener("load", function () {
+    preloader.classList.add("loaded");
+    document.body.classList.add("loaded");
+  });
+
+  //Para boton hamburguesa
+  $("#menu-btn").click(function () {
+    $("nav .navigation ul").addClass("active");
+  });
+  $("#menu-close").click(function () {
+    $("nav .navigation ul").removeClass("active");
+  });
+
+  //Switch
+  // Obtén la referencia al elemento HTML con la clase "switch"
+  const switchElement = document.querySelector(".switch");
+
+  // Agrega un evento de escucha al hacer clic en el interruptor
+  switchElement.addEventListener("click", (e) => {
+    // Cambia la clase "active" del interruptor y del body
+    switchElement.classList.toggle("active");
+    document.body.classList.toggle("active");
+
+    // Al hacer clic en el interruptor, guarda el estado en localStorage
+    if (document.body.classList.contains("active")) {
+      localStorage.setItem("activeMode", "enabled");
+    } else {
+      localStorage.setItem("activeMode", "disabled");
+    }
+  });
+
+  // Comprueba si el modo activo estaba habilitado previamente en localStorage
+  if (localStorage.getItem("activeMode") === "enabled") {
+    // Si estaba habilitado, establece la clase "active" en el body y el interruptor
+    switchElement.classList.add("active");
+    document.body.classList.add("active");
+  }
+
+  // Efecto de animación de scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+
+  const hiddenElements = document.querySelectorAll(".hidden");
+  hiddenElements.forEach((el) => observer.observe(el));
+</script>
