@@ -19,8 +19,13 @@ export const prerender = false;
 ---
 
 <Layout title={title}>
-  <article class="container prose max-w-2xl mx-auto mt-24">
-    <h1>{title}</h1>
-    <div set:html={content} />
-  </article>
+  <section class="blog-container">
+    <div class="blogs blogpost">
+      <article class="post">
+        <h1>{title}</h1>
+        <div set:html={content} />
+        <a href="#">Leer Siguiente Post</a>
+      </article>
+    </div>
+  </section>
 </Layout>
