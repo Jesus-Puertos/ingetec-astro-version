@@ -2,6 +2,9 @@
 import BlogPost from "@/components/BlogPost.astro";
 import Categories from "@/components/Categories.astro";
 import Layout from "@/layouts/Layout.astro";
+import { getLatestPost } from "@/lib/wp";
+
+const posts = await getLatestPost({ perPage: 3 });
 ---
 
 <Layout title="Sobre nosotros ">
@@ -13,7 +16,7 @@ import Layout from "@/layouts/Layout.astro";
   <!-- Noticias -->
   <section class="blog-container">
     <div class="blogs">
-      <BlogPost />
+      {posts.map((post) => <BlogPost {...post} />)}
     </div>
 
     <Categories />
