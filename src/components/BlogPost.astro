@@ -1,5 +1,5 @@
 ---
-import { getLatestPost } from "@/lib/wp"; // Asegúrate de ajustar la ruta según tu estructura de proyecto
+// import { getLatestPost } from "@/lib/wp"; // Asegúrate de ajustar la ruta según tu estructura de proyecto
 interface Props {
   title: string;
   excerpt: string;
@@ -10,15 +10,17 @@ interface Props {
 const { title, excerpt, featuredImage, date, slug } = Astro.props;
 ---
 
-<div>
+<div >
   {
     (
       <div class="post">
         <img src={featuredImage} alt="hola" />
         <h3>{title}</h3>
-        <p class="justify" set:html={excerpt} />
+        <p class="" set:html={excerpt} />
         <a href={`/post/${slug}`}>Leer más</a>
       </div>
     )
   }
 </div>
+
+

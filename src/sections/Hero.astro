@@ -6,10 +6,12 @@ const { title, content } = await getPageInfo("about");
 
 <!-- Home -->
 <section class="home">
-  <h2>Cuerpo Académico <span class="title-blue">INGE</span>TEC</h2>
-  <p class="justify" set:html={content} />
+  <h2>{title}</h2>
+  <p class="" set:html={content} />
   <div class="btn">
-    <a class="blue" href="#">Saber mas</a>
-    <a class="yellow" href="#">Ver proyectos</a>
+    <a class="blue" href="/about-us">Saber mas</a>
+    <a class="yellow" href="/proyects">Ver proyectos</a>
   </div>
 </section>
+
+

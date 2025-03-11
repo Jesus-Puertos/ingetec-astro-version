@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^8.1.1",
     "@heroui/system": "^2.4.11",
     "@heroui/table": "^2.2.14",
     "@heroui/theme": "^2.4.11",

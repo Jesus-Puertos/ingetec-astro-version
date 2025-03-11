@@ -1,0 +1,31 @@
+---
+import { getPostInfo } from "@/lib/wp";
+import Layout from "@/layouts/Layout.astro";
+
+const slug = Astro.params.slug;
+
+if (!slug) {
+  return { status: 404 };
+}
+
+// export async function getStaticsPaths() {
+//   const slugs = await getAllPostsSlugs();
+
+//   return slugs.map((slug) => ({ params: { slug } }));
+// }
+
+const { title, content } = await getPostInfo(slug);
+export const prerender = false;
+---
+
+<Layout title={title}>
+  <section class="blog-container">
+    <div class="blogs blogpost">
+      <article class="post">
+        <h1>{title}</h1>
+        <div set:html={content} />
+        <a href="#">Leer Siguiente Post</a>
+      </article>
+    </div>
+  </section>
+</Layout>

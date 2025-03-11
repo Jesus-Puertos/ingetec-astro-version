@@ -1,4 +1,9 @@
-<!-- footer -->
+---
+  const year = new Date().getFullYear();
+
+  
+---
+
 <footer>
   <div class="footer-col">
     <h3>Proyectos</h3>
@@ -45,23 +50,23 @@
   </div>
 
   <div class="copyright">
-    <p>© 2023 INGETEC Cuerpo académico -Todos los derechos reservados</p>
+    <p>© {year} INGETEC Cuerpo académico - Sitio web hecho por <a href="https://jesus-puertosdev.netlify.app/" target="_blank" >Jesús Alberto Rodriguez Puertos</a></p>
     <div class="pro-links">
       <ul>
-        <a href="https://www.facebook.com/profile.php?id=100083281722001">
+        <a href="https://www.facebook.com/profile.php?id=100083281722001" target="_blank" >
           <i class="fab fa-facebook-f"></i></a
         >
 
-        <a href="https://twitter.com/ITSZ_Ingetec">
-          <i class="fab fa-twitter"></i></a
+        <a href="https://twitter.com/ITSZ_Ingetec" target="_blank"> 
+          <i class="fab fa-twitter" ></i></a
         >
 
-        <a href="https://www.instagram.com/cuerpo_academico_ingetec_/"
+        <a href="https://www.instagram.com/cuerpo_academico_ingetec_/" target="_blank"
           ><i class="fab fa-instagram"></i></a
         >
 
         <a
-          href="https://www.linkedin.com/in/cuerpo-academico-ingetec-722155235/"
+          href="https://www.linkedin.com/in/cuerpo-academico-ingetec-722155235/" target="_blank"
           ><i class="fab fa-linkedin-in"></i></a
         >
       </ul>
@@ -71,3 +76,15 @@
     </div>
   </div>
 </footer>
+
+
+<style>
+  a {
+    text-decoration: none;
+    color: #fff;
+    &:hover {
+      color: #f1c40f;
+      text-decoration: underline;
+    }
+  }
+</style>
